@@ -39,6 +39,13 @@ let currentQuestion = 0;
 let answers = [];
 
 const questionBox = document.getElementById("question-box");
+const startBtn = document.getElementById("startBtn");
+
+startBtn.addEventListener("click", startQuiz);
+
+function startQuiz() {
+  showQuestion();
+}
 
 function showQuestion() {
   const q = questions[currentQuestion];
@@ -77,9 +84,9 @@ function finishQuiz() {
     .join("\n\n");
 
   // 🔻 Substitua o número abaixo pelo seu WhatsApp com DDI (ex: 55 + DDD + número)
-  const phone = "5514998556545";
+  const phone = "5599999999999";
 
-  const url = `https://wa.me/${5514998556545}?text=${encodeURIComponent(
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(
     "Olá, vim do questionário do Studio Bruxo!\n\n" + message
   )}`;
 
@@ -87,5 +94,3 @@ function finishQuiz() {
     window.location.href = url;
   }, 1500);
 }
-
-showQuestion();

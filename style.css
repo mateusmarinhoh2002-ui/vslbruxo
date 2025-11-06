@@ -13,10 +13,10 @@ body {
 .container {
   text-align: center;
   max-width: 400px;
-  padding: 20px;
-  background: rgba(15, 15, 15, 0.85);
+  padding: 25px;
+  background: rgba(15, 15, 15, 0.9);
   border-radius: 16px;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
 }
 
 .title {
@@ -35,7 +35,7 @@ body {
 }
 
 .question {
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   font-size: 1.2rem;
   font-weight: 500;
 }
@@ -69,11 +69,30 @@ button.option:hover {
   font-weight: bold;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+.start-btn {
+  background: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+.start-btn:hover {
+  background: #cc0000;
+  transform: scale(1.08);
 }
 
 .fade {
   animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
