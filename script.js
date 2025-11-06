@@ -63,7 +63,7 @@ function finishQuiz() {
       .join("\n\n")}`
   );
 
-  const whatsappURL = `https://wa.me/5599999999999?text=${msg}`;
+  const whatsappURL = `https://wa.me/5514998556545?text=${msg}`;
 
   card.innerHTML = `
     <div class="fade-in">
