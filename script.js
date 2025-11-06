@@ -30,8 +30,8 @@ const questions = [
     ]
   },
   {
-    text: "Por onde prefere que a equipe entre em contato?",
-    options: ["WhatsApp", "Instagram", "E-mail"]
+    text: "Entre em contato conosco",
+    options: ["WhatsApp"]
   }
 ];
 
