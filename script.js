@@ -69,7 +69,7 @@ function finishQuiz() {
     <div class="fade-in">
       <h2 class="title-glow">Perfeito! 🎯</h2>
       <p>Obrigado por responder! Clique abaixo para enviar suas respostas no WhatsApp e agendar seu horário.</p>
-      <a href="${whatsappURL}" target="_blank">
+      <a href="${https://wa.me/5514998556545}" target="_blank">
         <button>Enviar pelo WhatsApp</button>
       </a>
     </div>
