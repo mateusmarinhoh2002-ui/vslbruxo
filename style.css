@@ -1,146 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap');
-
 body {
-  font-family: 'Rajdhani', sans-serif;
-  background: radial-gradient(circle at top left, #000, #050505);
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at top, #000000 0%, #1a0000 100%);
   color: #fff;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
-  margin: 0;
-  overflow: hidden;
 }
 
-/* 🔥 FUMAÇA EM MOVIMENTO */
-.smoke, .smoke2 {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 0, 0, 0.1), transparent 60%),
-              radial-gradient(circle at 70% 70%, rgba(255, 0, 0, 0.1), transparent 60%),
-              radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 70%);
-  filter: blur(80px);
-  opacity: 0.6;
-  animation: smokeMove 25s linear infinite;
-  z-index: 0;
-}
-
-.smoke2 {
-  animation-direction: reverse;
-  animation-duration: 40s;
-  opacity: 0.4;
-}
-
-@keyframes smokeMove {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-20%, -10%) scale(1.2); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-/* CONTEÚDO */
 .container {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card {
-  background: rgba(15, 15, 15, 0.95);
-  border-radius: 20px;
-  padding: 40px;
-  width: 360px;
   text-align: center;
-  box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
-  border: 1px solid rgba(255, 0, 0, 0.4);
-  transition: all 0.3s ease;
+  max-width: 400px;
+  padding: 20px;
+  background: rgba(15, 15, 15, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
 }
 
-/* 🔥 TÍTULO COM GLOW */
-.title-glow {
-  color: #ff2b2b;
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff0000;
+  margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 28px;
-  text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.4);
-  animation: glowPulse 3s ease-in-out infinite;
 }
 
-@keyframes glowPulse {
-  0%, 100% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 25px rgba(255, 0, 0, 0.5); }
-  50% { text-shadow: 0 0 20px rgba(255, 50, 50, 1), 0 0 40px rgba(255, 0, 0, 0.7); }
+.subtitle {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 20px;
 }
 
-.card p {
-  color: #ddd;
-  font-size: 15px;
-  margin-top: 10px;
+.question {
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
-button {
-  background-color: #ff2b2b;
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button.option {
+  background: #111;
   color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 25px;
-  margin-top: 25px;
+  border: 1px solid #ff0000;
+  padding: 12px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
   transition: 0.3s;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-  animation: breathe 2.5s ease-in-out infinite;
+  font-size: 1rem;
 }
 
-@keyframes breathe {
-  0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); transform: scale(1); }
-  50% { box-shadow: 0 0 25px rgba(255, 0, 0, 0.7); transform: scale(1.05); }
-}
-
-button:hover {
-  background-color: #ff0000;
-  transform: scale(1.08);
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 15px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 0, 0, 0.3);
-  outline: none;
-  background-color: rgba(30, 30, 30, 0.95);
+button.option:hover {
+  background: #ff0000;
   color: #fff;
-  font-size: 15px;
+  transform: scale(1.05);
 }
 
-input:focus {
-  border-color: #ff2b2b;
-  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
-}
-
-.small {
-  font-size: 12px;
-  color: #888;
-  margin-top: 15px;
-}
-
-.fade-in {
-  animation: fadeIn 0.6s ease forwards;
+.final-message {
+  font-size: 1.2rem;
+  color: #ff0000;
+  font-weight: bold;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade {
+  animation: fadeIn 0.4s ease;
 }

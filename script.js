@@ -1,54 +1,66 @@
-console.log("🔥 script.js carregado — modo BRUXO ativo");
-
 const questions = [
-  "Qual estilo de tatuagem você mais gosta?",
-  "Já tem alguma tatuagem ou será a primeira?",
-  "Qual tamanho aproximado da tatuagem?",
-  "Em qual parte do corpo pretende tatuar?",
-  "Tem alguma referência ou imagem em mente?",
-  "Prefere colorida ou preto e cinza?",
-  "Quer um orçamento ou apenas agendar uma conversa?",
-  "Qual dia ou período é melhor pra você?",
-  "Você é de qual cidade/bairro?",
-  "Qual seu nome completo?"
+  {
+    text: "Você já tem uma ideia do desenho que quer tatuar?",
+    options: [
+      "Sim, já sei exatamente o que quero",
+      "Tenho uma ideia, mas quero ajuda pra definir",
+      "Ainda não sei, quero ver ideias do Studio"
+    ]
+  },
+  {
+    text: "Onde você pretende fazer essa tatuagem?",
+    options: ["Braço", "Perna", "Costas", "Peito", "Outra região"]
+  },
+  {
+    text: "Qual estilo mais te representa?",
+    options: [
+      "Blackwork / Preto e Cinza",
+      "Realismo",
+      "Fine line",
+      "Old school",
+      "Místico / Bruxaria"
+    ]
+  },
+  {
+    text: "Você gostaria de receber um orçamento e conceito exclusivo criado pelo Studio?",
+    options: [
+      "Sim, quero algo exclusivo",
+      "Quero conversar antes",
+      "Só quero saber o preço médio"
+    ]
+  },
+  {
+    text: "Por onde prefere que a equipe entre em contato?",
+    options: ["WhatsApp", "Instagram", "E-mail"]
+  }
 ];
 
-let current = 0;
+let currentQuestion = 0;
 let answers = [];
 
-function startQuiz() {
-  current = 0;
-  answers = [];
-  showQuestion();
-}
+const questionBox = document.getElementById("question-box");
 
 function showQuestion() {
-  const card = document.getElementById("card");
-  card.innerHTML = `
-    <div class="fade-in">
-      <h2 class="title-glow">Pergunta ${current + 1}</h2>
-      <p>${questions[current]}</p>
-      <input type="text" id="answer" placeholder="Digite sua resposta..." />
-      <button id="nextBtn">Próxima</button>
+  const q = questions[currentQuestion];
+  questionBox.innerHTML = `
+    <div class="fade">
+      <p class="question">${q.text}</p>
+      <div class="options">
+        ${q.options
+          .map(
+            (opt) => `<button class="option" onclick="selectOption('${opt}')">${opt}</button>`
+          )
+          .join("")}
+      </div>
     </div>
   `;
-  document.getElementById("nextBtn").addEventListener("click", nextQuestion);
 }
 
-function nextQuestion() {
-  const answerField = document.getElementById("answer");
-  if (!answerField) return;
+function selectOption(option) {
+  answers.push({ question: questions[currentQuestion].text, answer: option });
+  currentQuestion++;
 
-  const answer = answerField.value.trim();
-  if (answer === "") {
-    alert("Por favor, responda antes de continuar.");
-    return;
-  }
-
-  answers.push(answer);
-  current++;
-
-  if (current < questions.length) {
+  if (currentQuestion < questions.length) {
     showQuestion();
   } else {
     finishQuiz();
@@ -56,27 +68,24 @@ function nextQuestion() {
 }
 
 function finishQuiz() {
-  const card = document.getElementById("card");
-  const msg = encodeURIComponent(
-    `Olá! Aqui estão minhas respostas do questionário:\n\n${questions
-      .map((q, i) => `${i + 1}. ${q}\n👉 ${answers[i]}`)
-      .join("\n\n")}`
-  );
-
-  const whatsappURL = `https://wa.me/5514998556545?text=${msg}`;
-
-  card.innerHTML = `
-    <div class="fade-in">
-      <h2 class="title-glow">Perfeito! 🎯</h2>
-      <p>Obrigado por responder! Clique abaixo para enviar suas respostas no WhatsApp e agendar seu horário.</p>
-      <a href="${https://wa.me/5514998556545}" target="_blank">
-        <button>Enviar pelo WhatsApp</button>
-      </a>
-    </div>
+  questionBox.innerHTML = `
+    <p class="final-message fade">Finalizando seu orçamento exclusivo...</p>
   `;
+
+  const message = answers
+    .map((a, i) => `Pergunta ${i + 1}: ${a.question}\nResposta: ${a.answer}`)
+    .join("\n\n");
+
+  // 🔻 Substitua o número abaixo pelo seu WhatsApp com DDI (ex: 55 + DDD + número)
+  const phone = "5514998556545";
+
+  const url = `https://wa.me/${5514998556545}?text=${encodeURIComponent(
+    "Olá, vim do questionário do Studio Bruxo!\n\n" + message
+  )}`;
+
+  setTimeout(() => {
+    window.location.href = url;
+  }, 1500);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const startBtn = document.getElementById("startBtn");
-  if (startBtn) startBtn.addEventListener("click", startQuiz);
-});
+showQuestion();
