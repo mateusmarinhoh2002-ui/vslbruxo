@@ -84,9 +84,9 @@ function finishQuiz() {
     .join("\n\n");
 
   // 🔻 Substitua o número abaixo pelo seu WhatsApp com DDI (ex: 55 + DDD + número)
-  const phone = "5599999999999";
+  const phone = "5514998556545";
 
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(
+  const url = `https://wa.me/${5514998556545}?text=${encodeURIComponent(
     "Olá, vim do questionário do Studio Bruxo!\n\n" + message
   )}`;
 
